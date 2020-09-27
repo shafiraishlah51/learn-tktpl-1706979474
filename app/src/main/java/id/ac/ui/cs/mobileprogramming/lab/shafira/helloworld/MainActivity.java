@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.mobileprogramming.shafira.helloworld;
+package id.ac.ui.cs.mobileprogramming.lab.shafira.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
