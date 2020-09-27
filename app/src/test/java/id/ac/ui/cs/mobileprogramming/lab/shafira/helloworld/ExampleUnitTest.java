@@ -16,7 +16,6 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 
-@RunWith(JUnit4.class)
 public class ExampleUnitTest {
     private static final String helloWorldText="Hello World!";
     private static final String counterNumber="0";
