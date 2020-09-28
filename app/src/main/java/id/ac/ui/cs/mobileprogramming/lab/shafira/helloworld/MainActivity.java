@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.mobileprogramming.shafira.helloworld;
+package id.ac.ui.cs.mobileprogramming.lab.shafira.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private int counter = 0;
+    public   int counter = 0;
     Button btn;
     TextView txv;
 
@@ -23,9 +23,12 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter ++;
+                clickedCounter(v);
                 txv.setText(Integer.toString(counter));
             }
         });
+    }
+    public void clickedCounter(View view){
+        counter++;
     }
 }
