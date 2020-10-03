@@ -1,9 +1,11 @@
 package id.ac.ui.cs.mobileprogramming.lab.shafira.helloworld;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     long tMilliSec, tStart, tBuff, tUpdate = 0L;
     int sec, min, milliSec;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
         btStop = findViewById(R.id.bt_stop);
 
         handler = new Handler();
+
+        Button exit = (Button) findViewById(R.id.Exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Exit();
+            }
+
+            private void Exit() {
+                finish();
+            }
+
+        });
+
+
         btStart.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("UseCompatLoadingForDrawables")
             @Override
@@ -42,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
                     chronometer.start();
                     isResume = true;
                     btStop.setVisibility(View.GONE);
-                    btStart.setImageDrawable(getResources().getDrawable(
-                            R.drawable.ic_play
-                    ));
 
                 }
                 else{
@@ -53,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
                     chronometer.stop();
                     isResume = false;
                     btStop.setVisibility(View.VISIBLE);
-                    btStart.setImageDrawable(getResources().getDrawable(
-                            R.drawable.ic_play
-                    ));
                 }
+                btStart.setImageDrawable(getResources().getDrawable(
+                        R.drawable.ic_pause
+                ));
             }
 
         });
@@ -90,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    int counter = 0;
+    @Override
+    public void onBackPressed() {
+
     }
 
     public Runnable runnable = new Runnable() {
