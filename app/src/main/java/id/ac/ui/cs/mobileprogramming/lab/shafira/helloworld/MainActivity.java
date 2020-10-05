@@ -6,9 +6,11 @@ import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     Handler handler;
     long tMilliSec, tStart, tBuff, tUpdate = 0L;
     int sec, min, milliSec;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Exit();
+                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                homeIntent.addCategory( Intent.CATEGORY_HOME );
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
             }
 
             private void Exit() {
@@ -61,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                     chronometer.start();
                     isResume = true;
                     btStop.setVisibility(View.GONE);
+                    btStart.setImageDrawable(getResources().getDrawable(
+                            R.drawable.ic_pause
+                    ));
 
                 }
                 else{
@@ -69,26 +77,14 @@ public class MainActivity extends AppCompatActivity {
                     chronometer.stop();
                     isResume = false;
                     btStop.setVisibility(View.VISIBLE);
+                    btStart.setImageDrawable(getResources().getDrawable(
+                            R.drawable.ic_play
+                    ));
                 }
-                btStart.setImageDrawable(getResources().getDrawable(
-                        R.drawable.ic_pause
-                ));
             }
-
         });
 
         btStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isResume){
-                    btStart.setImageDrawable((getResources().getDrawable(
-                            R.drawable.ic_play
-                    )));
-                }
-            }
-        });
-
-        btStop.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 if(!isResume){
@@ -108,10 +104,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    int counter = 0;
     @Override
     public void onBackPressed() {
-
+        Log.d("CDA", "Memanggil onBackPressed");
     }
 
     public Runnable runnable = new Runnable() {
