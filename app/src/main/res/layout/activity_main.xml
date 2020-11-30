@@ -16,9 +16,18 @@
         android:layout_height="50dp"
         android:id="@+id/scanBtn"
         android:layout_gravity="bottom"
-        android:layout_margin="15dp"
         android:background="@color/colorPrimary"
         android:text="Scan Wifi"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/btn_submit"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:text="Send Wifi"
         android:textColor="#FFFFFF"/>
 
 </LinearLayout>
