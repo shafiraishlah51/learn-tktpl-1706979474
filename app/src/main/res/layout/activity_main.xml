@@ -52,10 +52,7 @@
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
         android:background="@color/colorPrimary"
-        android:text="Pass Your Name to JNI"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sample_text"/>
+        android:text="Pass Your Name to JNI" />
 
     <Button
         android:id="@+id/btnJniStringArray"
